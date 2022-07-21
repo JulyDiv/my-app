@@ -74,17 +74,17 @@ const ButtonDelete = styled.button`
 
 interface IRenderProps {
   todo: ITodoArr[];
-  setTodo?: (text: string) => void;
-  isOpenModal?: boolean;
-  setIsOpenModal?: (text: boolean) => boolean;
-  isOpenModalEdit?: boolean;
-  setIsOpenModalEdit?: (text: boolean) => boolean;
-  value?: string;
-  setValue?: (text: string) => string;
-  noteValue?: string;
-  setNoteValue?: (text: string) => string;
-  isChange?: (text: boolean) => boolean;
-  currentId?: string;
+  setTodo: any;
+  isOpenModal: boolean;
+  setIsOpenModal: any;
+  isOpenModalEdit: boolean;
+  setIsOpenModalEdit: any;
+  value: string;
+  setValue: any;
+  noteValue: string;
+  setNoteValue: any;
+  isChange: any;
+  currentId: any;
 }
 
 interface ITodoArr {

@@ -79,18 +79,18 @@ const ButtonAdd = styled.button`
 
 interface IDialogModalProps {
   todo: ITodoArr[];
-  setTodo?: (text: string) => void;
-  isOpenModal?: boolean;
-  setIsOpenModal?: (text: string) => boolean;
-  isOpenModalEdit?: boolean;
-  setIsOpenModalEdit?: (text: string) => boolean;
-  value?: string;
-  setValue?: (text: string) => string;
-  noteValue?: string;
-  setNoteValue?: (text: string) => string;
-  isChange?: (text: boolean) => boolean;
-  titleMain?: string;
-  currentId?: string;
+  setTodo: any;
+  isOpenModal: boolean;
+  setIsOpenModal: any;
+  isOpenModalEdit: boolean;
+  setIsOpenModalEdit: any;
+  value: string;
+  setValue: any;
+  noteValue: string;
+  setNoteValue: any;
+  isChange: any;
+  titleMain: string;
+  currentId: string;
 }
 
 interface ITodoArr {
