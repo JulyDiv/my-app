@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Layout } from "../Layout/Layout.styled";
 import Header from "../Header/Header";
 import Render from "../Render/Render";
+import { ITodoArr } from "../DialogModal/types";
 
 const ButtonAdd = styled.button`
   margin-top: 400px;
@@ -23,7 +24,7 @@ const ButtonAdd = styled.button`
 const Todo: FC = ({}) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState<ITodoArr[]>([]);
   const [value, setValue] = useState("");
   const [noteValue, setNoteValue] = useState("");
 
@@ -56,7 +57,8 @@ const Todo: FC = ({}) => {
         value={value}
         setValue={setValue}
         noteValue={noteValue}
-        setNoteValue={setNoteValue} />
+        setNoteValue={setNoteValue}
+      />
       <ButtonAdd onClick={() => setIsOpenModal(true)}></ButtonAdd>
     </Layout>
   );

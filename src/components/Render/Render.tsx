@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import moment from "moment";
 import DialogModal from "../DialogModal/DialogModal";
+import { IDialogModalProps } from "../DialogModal/types";
 
 const TodoRenderBlock = styled.div`
   display: flex;
@@ -89,26 +90,11 @@ const ButtonDelete = styled.button`
   cursor: pointer;
 `;
 
-interface IRenderProps {
-  todo: ITodoArr[];
-  setTodo: any;
+interface IRenderProps
+  extends Omit<IDialogModalProps, "isChange" | "titleMain" | "currentId"> {
   isOpenModal: boolean;
-  setIsOpenModal: (a: boolean) => void;
   isOpenModalEdit: boolean;
-  setIsOpenModalEdit: (a: boolean) => void;
-  value: string;
-  setValue: any;
-  noteValue: string;
-  setNoteValue: any;
-  // isChange: boolean;
-  // currentId: any;
-}
-
-interface ITodoArr {
-  id: string;
-  title: string;
-  note: string;
-  item?: string;
+  setIsOpenModalEdit: (isOpen: boolean) => void;
 }
 
 const Render: FC<IRenderProps> = ({

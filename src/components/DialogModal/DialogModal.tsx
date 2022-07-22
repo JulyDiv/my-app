@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled, { keyframes } from "styled-components";
+//@ts-ignore
 import uuid from "react-uuid";
+import { IDialogModalProps } from "./types";
 
 const DialogModalBlock = styled.div`
   position: absolute;
@@ -38,6 +40,7 @@ const InputBlock = styled.div`
   margin: 20px auto;
   width: 400px;
   height: 190px;
+  //border-bottom: error ? 1px solid red : initial;
 `;
 
 const InputTitle = styled.input`
@@ -87,28 +90,6 @@ const ButtonAdd = styled.button`
   }
 `;
 
-interface IDialogModalProps {
-  todo: ITodoArr[];
-  setTodo: (a: string) => string;
-  isOpenModal: boolean;
-  setIsOpenModal: (a: boolean) => void;
-  isOpenModalEdit: boolean;
-  setIsOpenModalEdit: (a: boolean) => void;
-  value: string;
-  setValue: (a: string) => string;
-  noteValue: string;
-  setNoteValue: (a: string) => string;
-  isChange: boolean;
-  titleMain: string;
-  currentId: any;
-}
-
-interface ITodoArr {
-  id: string;
-  title: string;
-  note: string;
-}
-
 type Inputs = {
   todo: string;
   note: string;
@@ -130,17 +111,17 @@ const DialogModal: FC<IDialogModalProps> = ({
     register,
     handleSubmit,
     reset,
-    isValid,
     formState: { errors },
   } = useForm<Inputs>({ mode: "onBlur" });
 
-  const onSubmits: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const onSubmits: SubmitHandler<Inputs> = ({ todo, note }) => {
+    console.log(todo, note);
     reset();
   };
 
   const onSubmit = () => {
     let newTodo = [];
+    //заюзать коллекию new Map() класть обновленную задачу по ключу
     if (isChange) {
       newTodo = [...todo].filter((item) => {
         if (item.id === currentId) {
@@ -173,41 +154,34 @@ const DialogModal: FC<IDialogModalProps> = ({
     <DialogModalBlock>
       <Title>{titleMain}</Title>
       <form onSubmit={handleSubmit(onSubmits)}>
+        {/* <InputBlock error={errors.todo} > */}
         <InputBlock>
           <InputTitle
             {...register("todo", {
-              required: true,
-              maxLength: 20,
-              pattern: /^[A-Za-z]+$/i,
+              required: {
+                value: true,
+                message: "Поле обязательно для заполнения",
+              },
+              maxLength: { value: 20, message: "Количество символов до 20-ти" },
+              pattern: { value: /^[A-Za-z]+$/i, message: "твой язык хуета" },
+            
             })}
+            defaultValue={value}
             placeholder="Todo"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
           />
-          {errors?.todo?.type === "required" && (
-            <p>Поле обязательно для заполнения</p>
-          )}
-          {errors?.todo?.type === "maxLength" && (
-            <p>Количество символов до 20-ти</p>
-          )}
-          {errors?.todo?.type === "pattern" && <p>Неверные символы</p>}
+          {errors?.todo?.message && <p>{errors?.todo?.message}</p>}
+
           <InputMission
             {...register("note", { required: false, pattern: /^[A-Za-z]+$/i })}
             placeholder="Note"
-            value={noteValue}
-            onChange={(e) => {
-              setNoteValue(e.target.value);
-            }}
+            defaultValue={noteValue}
           />
           {errors?.note?.type === "pattern" && <p>Неверные символы</p>}
         </InputBlock>
         <ButtonBlock>
+          {/**не забыть про useCallback */}
           <ButtonClose onClick={() => closeModal()}>Close</ButtonClose>
-          <ButtonAdd type="submit" disabled={!isValid} onClick={() => onSubmit()}>
-            {isChange ? "Save" : "Add"}
-          </ButtonAdd>
+          <ButtonAdd type="submit" onClick={onSubmit}>{isChange ? "Save" : "Add"}</ButtonAdd>
         </ButtonBlock>
       </form>
     </DialogModalBlock>
