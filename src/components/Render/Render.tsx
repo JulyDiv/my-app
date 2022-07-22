@@ -10,12 +10,23 @@ const TodoRenderBlock = styled.div`
   align-items: center;
   margin-bottom: 5px;
   width: 100%;
-  height: 50px;
   background-color: #c5d6d1;
+  animation: renderBlock 0.2s ease-in 1 both;
+  @keyframes renderBlock {
+    0% {
+      opacity: 0;
+      transform: translateX(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
 `;
 
 const Name = styled.span`
   margin-left: 15px;
+  padding: 5px 0;
   width: 120px;
   color: black;
   font-style: normal;
@@ -23,16 +34,22 @@ const Name = styled.span`
   font-size: 18px;
   line-height: 21px;
   text-align: start;
+  word-break: break-all;
+  hyphens: auto;
 `;
 
 const Note = styled.span`
   display: flex;
+  padding: 5px 0;
   width: 120px;
+  min-height: 50px;
   color: black;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
+  align-items: center;
+  word-break: break-all;
 `;
 
 const Date = styled.span`
@@ -76,15 +93,15 @@ interface IRenderProps {
   todo: ITodoArr[];
   setTodo: any;
   isOpenModal: boolean;
-  setIsOpenModal: any;
+  setIsOpenModal: (a: boolean) => void;
   isOpenModalEdit: boolean;
-  setIsOpenModalEdit: any;
+  setIsOpenModalEdit: (a: boolean) => void;
   value: string;
   setValue: any;
   noteValue: string;
   setNoteValue: any;
-  isChange: any;
-  currentId: any;
+  // isChange: boolean;
+  // currentId: any;
 }
 
 interface ITodoArr {
@@ -110,11 +127,11 @@ const Render: FC<IRenderProps> = ({
 
   const [currentId, setCurrentId] = useState();
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: string) => {
     let newTodo = [...todo].filter((item) => item.id != id);
     setTodo(newTodo);
   };
-  const editModal = (title, note, id) => {
+  const editModal = (title: string, note: string, id: any) => {
     setIsOpenModalEdit(true);
     setValue(title);
     setNoteValue(note);

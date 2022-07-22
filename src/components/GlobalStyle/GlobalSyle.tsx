@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+* {
+    transition: all 0.2s;
+  }
   html {
     box-sizing: border-box;
   }

@@ -1,5 +1,6 @@
 import { FC } from "react";
-import styled from "styled-components";
+import { useForm, SubmitHandler } from "react-hook-form";
+import styled, { keyframes } from "styled-components";
 import uuid from "react-uuid";
 
 const DialogModalBlock = styled.div`
@@ -12,7 +13,17 @@ const DialogModalBlock = styled.div`
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 0 5px rgb(0 0 0 / 50%);
-  /* animation: dialogModal duration timing-function delay iteration-count direction fill-mode; */
+  animation: dialogModal 0.2s ease-in 1 both;
+  @keyframes dialogModal {
+    0% {
+      opacity: 0;
+      transform: translateX(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
 `;
 
 const Title = styled.h2`
@@ -40,10 +51,9 @@ const InputTitle = styled.input`
 `;
 
 const InputMission = styled.input`
-  display: block;
-  padding-left: 10px;
+  padding: 5px 10px;
   height: 100px;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 5px;
   &:hover {
     border: 4px solid #437275;
@@ -79,18 +89,18 @@ const ButtonAdd = styled.button`
 
 interface IDialogModalProps {
   todo: ITodoArr[];
-  setTodo: any;
+  setTodo: (a: string) => string;
   isOpenModal: boolean;
-  setIsOpenModal: any;
+  setIsOpenModal: (a: boolean) => void;
   isOpenModalEdit: boolean;
-  setIsOpenModalEdit: any;
+  setIsOpenModalEdit: (a: boolean) => void;
   value: string;
-  setValue: any;
+  setValue: (a: string) => string;
   noteValue: string;
-  setNoteValue: any;
-  isChange: any;
+  setNoteValue: (a: string) => string;
+  isChange: boolean;
   titleMain: string;
-  currentId: string;
+  currentId: any;
 }
 
 interface ITodoArr {
@@ -98,6 +108,11 @@ interface ITodoArr {
   title: string;
   note: string;
 }
+
+type Inputs = {
+  todo: string;
+  note: string;
+};
 
 const DialogModal: FC<IDialogModalProps> = ({
   setIsOpenModal,
@@ -111,6 +126,19 @@ const DialogModal: FC<IDialogModalProps> = ({
   titleMain,
   currentId,
 }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    isValid,
+    formState: { errors },
+  } = useForm<Inputs>({ mode: "onBlur" });
+
+  const onSubmits: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    reset();
+  };
+
   const onSubmit = () => {
     let newTodo = [];
     if (isChange) {
@@ -144,28 +172,44 @@ const DialogModal: FC<IDialogModalProps> = ({
   return (
     <DialogModalBlock>
       <Title>{titleMain}</Title>
-      <InputBlock>
-        <InputTitle
-          placeholder="Todo"
-          value={value}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-        />
-        <InputMission
-          placeholder="Note"
-          value={noteValue}
-          onChange={(e) => {
-            setNoteValue(e.target.value);
-          }}
-        />
-      </InputBlock>
-      <ButtonBlock>
-        <ButtonClose onClick={() => closeModal()}>Close</ButtonClose>
-        <ButtonAdd onClick={() => onSubmit()}>
-          {isChange ? "Save" : "Add"}
-        </ButtonAdd>
-      </ButtonBlock>
+      <form onSubmit={handleSubmit(onSubmits)}>
+        <InputBlock>
+          <InputTitle
+            {...register("todo", {
+              required: true,
+              maxLength: 20,
+              pattern: /^[A-Za-z]+$/i,
+            })}
+            placeholder="Todo"
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+          />
+          {errors?.todo?.type === "required" && (
+            <p>Поле обязательно для заполнения</p>
+          )}
+          {errors?.todo?.type === "maxLength" && (
+            <p>Количество символов до 20-ти</p>
+          )}
+          {errors?.todo?.type === "pattern" && <p>Неверные символы</p>}
+          <InputMission
+            {...register("note", { required: false, pattern: /^[A-Za-z]+$/i })}
+            placeholder="Note"
+            value={noteValue}
+            onChange={(e) => {
+              setNoteValue(e.target.value);
+            }}
+          />
+          {errors?.note?.type === "pattern" && <p>Неверные символы</p>}
+        </InputBlock>
+        <ButtonBlock>
+          <ButtonClose onClick={() => closeModal()}>Close</ButtonClose>
+          <ButtonAdd type="submit" disabled={!isValid} onClick={() => onSubmit()}>
+            {isChange ? "Save" : "Add"}
+          </ButtonAdd>
+        </ButtonBlock>
+      </form>
     </DialogModalBlock>
   );
 };

@@ -56,8 +56,7 @@ const Todo: FC = ({}) => {
         value={value}
         setValue={setValue}
         noteValue={noteValue}
-        setNoteValue={setNoteValue}
-      />
+        setNoteValue={setNoteValue} />
       <ButtonAdd onClick={() => setIsOpenModal(true)}></ButtonAdd>
     </Layout>
   );
