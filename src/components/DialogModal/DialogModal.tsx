@@ -1,94 +1,9 @@
 import { FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import styled, { keyframes } from "styled-components";
 //@ts-ignore
 import uuid from "react-uuid";
 import { IDialogModalProps } from "./types";
-
-const DialogModalBlock = styled.div`
-  position: absolute;
-  top: 200px;
-  right: 600px;
-  padding: 20px 0;
-  width: 500px;
-  height: 300px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgb(0 0 0 / 50%);
-  animation: dialogModal 0.2s ease-in 1 both;
-  @keyframes dialogModal {
-    0% {
-      opacity: 0;
-      transform: translateX(0px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0px);
-    }
-  }
-`;
-
-const Title = styled.h2`
-  color: black;
-  text-align: center;
-`;
-
-const InputBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 20px auto;
-  width: 400px;
-  height: 190px;
-  //border-bottom: error ? 1px solid red : initial;
-`;
-
-const InputTitle = styled.input`
-  padding-left: 10px;
-  height: 40px;
-  font-size: 16px;
-  border-radius: 5px;
-  &:hover {
-    border: 4px solid #437275;
-  }
-`;
-
-const InputMission = styled.input`
-  padding: 5px 10px;
-  height: 100px;
-  font-size: 18px;
-  border-radius: 5px;
-  &:hover {
-    border: 4px solid #437275;
-  }
-`;
-
-const ButtonBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 20px auto;
-  width: 400px;
-`;
-
-const ButtonClose = styled.button`
-  width: 180px;
-  height: 30px;
-  font-size: 16px;
-  border-radius: 5px;
-  &:hover {
-    border: 4px solid #437275;
-  }
-`;
-
-const ButtonAdd = styled.button`
-  width: 180px;
-  height: 30px;
-  font-size: 16px;
-  border-radius: 5px;
-  &:hover {
-    border: 4px solid #437275;
-  }
-`;
+import { Button, ButtonBlock, DialogModalBlock, Input, InputBlock, Title } from "./DialogModal.styled";
 
 type Inputs = {
   todo: string;
@@ -114,12 +29,12 @@ const DialogModal: FC<IDialogModalProps> = ({
     formState: { errors },
   } = useForm<Inputs>({ mode: "onBlur" });
 
-  const onSubmits: SubmitHandler<Inputs> = ({ todo, note }) => {
-    console.log(todo, note);
+  const onSubmit: SubmitHandler<Inputs> = () => {
+    onSubmits();
     reset();
   };
 
-  const onSubmit = () => {
+  const onSubmits = () => {
     let newTodo = [];
     //заюзать коллекию new Map() класть обновленную задачу по ключу
     if (isChange) {
@@ -153,35 +68,55 @@ const DialogModal: FC<IDialogModalProps> = ({
   return (
     <DialogModalBlock>
       <Title>{titleMain}</Title>
-      <form onSubmit={handleSubmit(onSubmits)}>
-        {/* <InputBlock error={errors.todo} > */}
+      <form onSubmit={handleSubmit(onSubmit)}>
         <InputBlock>
-          <InputTitle
+          <Input
             {...register("todo", {
               required: {
                 value: true,
                 message: "Поле обязательно для заполнения",
               },
               maxLength: { value: 20, message: "Количество символов до 20-ти" },
-              pattern: { value: /^[A-Za-z]+$/i, message: "твой язык хуета" },
-            
+              pattern: {
+                value: /[A-Za-z]+/i,
+                message: "Неверные символы",
+              },
             })}
             defaultValue={value}
             placeholder="Todo"
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            style={{ border: errors.todo && "1px solid red" }}
           />
-          {errors?.todo?.message && <p>{errors?.todo?.message}</p>}
 
-          <InputMission
-            {...register("note", { required: false, pattern: /^[A-Za-z]+$/i })}
+          {errors?.todo?.message && (
+            <p style={{ color: "red" }}>{errors?.todo?.message}</p>
+          )}
+
+          <Input
+            {...register("note", {
+              required: false,
+              pattern: {
+                value: /[A-Za-z]+/i,
+                message: "Неверные символы",
+              },
+            })}
             placeholder="Note"
             defaultValue={noteValue}
+            onChange={(e) => {
+              setNoteValue(e.target.value);
+            }}
+            style={{ border: errors.note && "1px solid red" }}
           />
-          {errors?.note?.type === "pattern" && <p>Неверные символы</p>}
+          {errors?.note?.message && (
+            <p style={{ color: "red" }}>{errors?.note?.message}</p>
+          )}
         </InputBlock>
         <ButtonBlock>
           {/**не забыть про useCallback */}
-          <ButtonClose onClick={() => closeModal()}>Close</ButtonClose>
-          <ButtonAdd type="submit" onClick={onSubmit}>{isChange ? "Save" : "Add"}</ButtonAdd>
+          <Button onClick={() => closeModal()}>Close</Button>
+          <Button type="submit">{isChange ? "Save" : "Add"}</Button>
         </ButtonBlock>
       </form>
     </DialogModalBlock>

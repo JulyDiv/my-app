@@ -3,14 +3,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { Layout } from "../Layout/Layout.styled";
+// import Layout from "../Layout/Layout";
 import Header from "../Header/Header";
 import Render from "../Render/Render";
 import { ITodoArr } from "../DialogModal/types";
 
 const ButtonAdd = styled.button`
-  margin-top: 400px;
-  margin-bottom: 50px;
-  margin-left: 900px;
+  margin: 50px 0 50px 900px;
   width: 50px;
   height: 50px;
   border: transparent;

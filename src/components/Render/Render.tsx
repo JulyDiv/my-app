@@ -1,101 +1,17 @@
 import { FC } from "react";
-import styled from "styled-components";
 import { useState } from "react";
 import moment from "moment";
 import DialogModal from "../DialogModal/DialogModal";
-import { IDialogModalProps } from "../DialogModal/types";
+// import { IDialogModalProps } from "../DialogModal/types";
+import { IRenderProps } from "./types";
+import { ButtonBlock, Name, Note, TodoRenderBlock, Date, Button } from "./Render.styled";
 
-const TodoRenderBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5px;
-  width: 100%;
-  background-color: #c5d6d1;
-  animation: renderBlock 0.2s ease-in 1 both;
-  @keyframes renderBlock {
-    0% {
-      opacity: 0;
-      transform: translateX(0px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0px);
-    }
-  }
-`;
-
-const Name = styled.span`
-  margin-left: 15px;
-  padding: 5px 0;
-  width: 120px;
-  color: black;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
-  text-align: start;
-  word-break: break-all;
-  hyphens: auto;
-`;
-
-const Note = styled.span`
-  display: flex;
-  padding: 5px 0;
-  width: 120px;
-  min-height: 50px;
-  color: black;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21px;
-  align-items: center;
-  word-break: break-all;
-`;
-
-const Date = styled.span`
-  color: black;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21px;
-`;
-
-const ButtonBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 15px;
-  width: 410px;
-  height: 50px;
-`;
-
-const ButtonChange = styled.button`
-  width: 200px;
-  height: 25px;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 21px;
-  cursor: pointer;
-`;
-
-const ButtonDelete = styled.button`
-  width: 200px;
-  height: 25px;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 21px;
-  cursor: pointer;
-`;
-
-interface IRenderProps
-  extends Omit<IDialogModalProps, "isChange" | "titleMain" | "currentId"> {
-  isOpenModal: boolean;
-  isOpenModalEdit: boolean;
-  setIsOpenModalEdit: (isOpen: boolean) => void;
-}
+// interface IRenderProps
+//   extends Omit<IDialogModalProps, "isChange" | "titleMain" | "currentId"> {
+//   isOpenModal: boolean;
+//   isOpenModalEdit: boolean;
+//   setIsOpenModalEdit: (isOpen: boolean) => void;
+// }
 
 const Render: FC<IRenderProps> = ({
   todo,
@@ -131,10 +47,10 @@ const Render: FC<IRenderProps> = ({
           <Note>{note}</Note>
           <Date>Create {data}</Date>
           <ButtonBlock>
-            <ButtonChange onClick={() => editModal(title, note, id)}>
+            <Button onClick={() => editModal(title, note, id)}>
               Change
-            </ButtonChange>
-            <ButtonDelete onClick={() => deleteTodo(id)}>Delete</ButtonDelete>
+            </Button>
+            <Button onClick={() => deleteTodo(id)}>Delete</Button>
           </ButtonBlock>
         </TodoRenderBlock>
       ))}
