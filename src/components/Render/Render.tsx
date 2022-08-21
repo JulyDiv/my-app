@@ -1,17 +1,17 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useState } from "react";
 import moment from "moment";
 import DialogModal from "../DialogModal/DialogModal";
 // import { IDialogModalProps } from "../DialogModal/types";
 import { IRenderProps } from "./types";
-import { ButtonBlock, Name, Note, TodoRenderBlock, Date, Button } from "./Render.styled";
-
-// interface IRenderProps
-//   extends Omit<IDialogModalProps, "isChange" | "titleMain" | "currentId"> {
-//   isOpenModal: boolean;
-//   isOpenModalEdit: boolean;
-//   setIsOpenModalEdit: (isOpen: boolean) => void;
-// }
+import {
+  ButtonBlock,
+  Name,
+  Note,
+  TodoRenderBlock,
+  Date,
+  Button,
+} from "./Render.styled";
 
 const Render: FC<IRenderProps> = ({
   todo,
@@ -35,8 +35,8 @@ const Render: FC<IRenderProps> = ({
   };
   const editModal = (title: string, note: string, id: any) => {
     setIsOpenModalEdit(true);
-    setValue(title);
-    setNoteValue(note);
+    setValue?.(title);
+    setNoteValue?.(note);
     setCurrentId(id);
   };
   return (
@@ -44,12 +44,11 @@ const Render: FC<IRenderProps> = ({
       {todo.map(({ id, title, note }) => (
         <TodoRenderBlock key={id}>
           <Name>{title}</Name>
+
           <Note>{note}</Note>
           <Date>Create {data}</Date>
           <ButtonBlock>
-            <Button onClick={() => editModal(title, note, id)}>
-              Change
-            </Button>
+            <Button onClick={() => editModal(title, note, id)}>Change</Button>
             <Button onClick={() => deleteTodo(id)}>Delete</Button>
           </ButtonBlock>
         </TodoRenderBlock>
@@ -59,13 +58,11 @@ const Render: FC<IRenderProps> = ({
           titleMain={isOpenModal ? "Add New Todo" : "Edit Todo"}
           setIsOpenModal={isOpenModal ? setIsOpenModal : setIsOpenModalEdit}
           isChange={isOpenModalEdit}
-          value={value}
-          setValue={setValue}
+          value={isOpenModal ? "" : value}
           todo={todo}
           setTodo={setTodo}
-          noteValue={noteValue}
+          noteValue={isOpenModal ? "" : noteValue}
           currentId={currentId}
-          setNoteValue={setNoteValue}
         />
       )}
     </>

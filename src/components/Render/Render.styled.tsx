@@ -44,9 +44,9 @@ export const Note = styled.span`
   font-size: 18px;
   line-height: 21px;
   word-break: break-all;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis; */
 `;
 
 export const Date = styled.span`
@@ -74,6 +74,7 @@ export const Button = styled.button`
   font-size: 18px;
   line-height: 21px;
   border: 1px solid #437275;
+  border-radius: 5px;
   background-color: white;
   cursor: pointer;
   &:hover {

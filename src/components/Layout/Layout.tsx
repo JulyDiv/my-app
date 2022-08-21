@@ -25,11 +25,13 @@ const ButtonAdd = styled.button`
 
 interface ILayoutProps {
   setIsOpenModal: (isOpen: boolean) => void;
+  children?: React.ReactNode;
 }
-const Layout: FC<ILayoutProps> = () => {
+const Layout: FC<ILayoutProps> = ({ setIsOpenModal, children }) => {
   return (
     <LayoutBlock>
       <ButtonAdd onClick={() => setIsOpenModal(true)}></ButtonAdd>
+      {children}
     </LayoutBlock>
   );
 };

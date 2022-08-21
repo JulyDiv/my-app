@@ -1,47 +1,52 @@
-import { FC } from "react";
+import { FC, memo, useCallback } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 //@ts-ignore
 import uuid from "react-uuid";
 import { IDialogModalProps } from "./types";
-import { Button, ButtonBlock, DialogModalBlock, Input, InputBlock, Title } from "./DialogModal.styled";
+import {
+  Button,
+  ButtonBlock,
+  DialogModalBlock,
+  Input,
+  InputBlock,
+  Overlay,
+  Title,
+} from "./DialogModal.styled";
 
 type Inputs = {
-  todo: string;
+  todos: string;
   note: string;
 };
 
 const DialogModal: FC<IDialogModalProps> = ({
   setIsOpenModal,
   isChange,
-  value,
-  setValue,
   todo,
-  setTodo,
+  value,
   noteValue,
-  setNoteValue,
+  setTodo,
   titleMain,
-  currentId,
+  currentId
 }) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<Inputs>({ mode: "onBlur" });
+  } = useForm<Inputs>({
+    mode: "onBlur",
+    defaultValues: { note: noteValue, todos: value },
+  });
 
-  const onSubmit: SubmitHandler<Inputs> = () => {
-    onSubmits();
-    reset();
-  };
-
-  const onSubmits = () => {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const { note, todos } = data;
+    console.log(data);
     let newTodo = [];
-    //заюзать коллекию new Map() класть обновленную задачу по ключу
     if (isChange) {
       newTodo = [...todo].filter((item) => {
         if (item.id === currentId) {
-          item.title = value;
-          item.note = noteValue;
+          item.title = data.todos;
+          item.note = data.note;
         }
         return item;
       });
@@ -50,77 +55,70 @@ const DialogModal: FC<IDialogModalProps> = ({
         ...todo,
         {
           id: uuid(),
-          title: value,
-          note: noteValue,
+          title: todos,
+          note: note,
         },
       ];
     }
     setTodo(newTodo);
-    closeModal();
+    setIsOpenModal(false);
+    reset();
   };
 
-  const closeModal = () => {
-    setValue("");
-    setNoteValue("");
-    setIsOpenModal(false);
-  };
+  const onClick = useCallback(() => setIsOpenModal(false), []);
 
   return (
-    <DialogModalBlock>
-      <Title>{titleMain}</Title>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputBlock>
-          <Input
-            {...register("todo", {
-              required: {
-                value: true,
-                message: "Поле обязательно для заполнения",
-              },
-              maxLength: { value: 20, message: "Количество символов до 20-ти" },
-              pattern: {
-                value: /[A-Za-z]+/i,
-                message: "Неверные символы",
-              },
-            })}
-            defaultValue={value}
-            placeholder="Todo"
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            style={{ border: errors.todo && "1px solid red" }}
-          />
+    <Overlay>
+      <DialogModalBlock>
+        <Title>{titleMain}</Title>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <InputBlock>
+            <Input
+              {...register("todos", {
+                required: {
+                  value: true,
+                  message: "Поле обязательно для заполнения",
+                },
+                maxLength: {
+                  value: 20,
+                  message: "Количество символов до 20-ти",
+                },
+                pattern: {
+                  value: /[A-Za-z]+/i,
+                  message: "Неверные символы",
+                },
+              })}
+              placeholder="Todo"
+              style={{ border: errors.todos && "1px solid red" }}
+            />
 
-          {errors?.todo?.message && (
-            <p style={{ color: "red" }}>{errors?.todo?.message}</p>
-          )}
+            {errors?.todos?.message && (
+              <p style={{ color: "red" }}>{errors?.todos?.message}</p>
+            )}
 
-          <Input
-            {...register("note", {
-              required: false,
-              pattern: {
-                value: /[A-Za-z]+/i,
-                message: "Неверные символы",
-              },
-            })}
-            placeholder="Note"
-            defaultValue={noteValue}
-            onChange={(e) => {
-              setNoteValue(e.target.value);
-            }}
-            style={{ border: errors.note && "1px solid red" }}
-          />
-          {errors?.note?.message && (
-            <p style={{ color: "red" }}>{errors?.note?.message}</p>
-          )}
-        </InputBlock>
-        <ButtonBlock>
-          {/**не забыть про useCallback */}
-          <Button onClick={() => closeModal()}>Close</Button>
-          <Button type="submit">{isChange ? "Save" : "Add"}</Button>
-        </ButtonBlock>
-      </form>
-    </DialogModalBlock>
+            <Input
+              {...register("note", {
+                required: false,
+                pattern: {
+                  value: /[A-Za-z]+/i,
+                  message: "Неверные символы",
+                },
+              })}
+              placeholder="Note"
+              style={{ border: errors.note && "1px solid red" }}
+            />
+            {errors?.note?.message && (
+              <p style={{ color: "red" }}>{errors?.note?.message}</p>
+            )}
+          </InputBlock>
+          <ButtonBlock>
+            <Button onClick={onClick}>Close</Button>
+            <Button type="submit">{isChange ? "Save" : "Add"}</Button>
+          </ButtonBlock>
+        </form>
+      </DialogModalBlock>
+    </Overlay>
   );
 };
 
-export default DialogModal;
+export default memo(DialogModal);

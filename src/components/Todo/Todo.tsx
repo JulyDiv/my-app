@@ -1,24 +1,11 @@
 import { FC } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import styled from "styled-components";
+import { ButtonAdd } from "../ButtonAdd/ButtonAdd.styled";
 import { Layout } from "../Layout/Layout.styled";
-// import Layout from "../Layout/Layout";
 import Header from "../Header/Header";
 import Render from "../Render/Render";
 import { ITodoArr } from "../DialogModal/types";
-
-const ButtonAdd = styled.button`
-  margin: 50px 0 50px 900px;
-  width: 50px;
-  height: 50px;
-  border: transparent;
-  background-image: url("img/plus.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-`;
 
 const Todo: FC = ({}) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -28,7 +15,7 @@ const Todo: FC = ({}) => {
   const [noteValue, setNoteValue] = useState("");
 
   useEffect(() => {
-    const todo = JSON.parse(localStorage.todo);
+    const todo = localStorage.todo ? JSON.parse(localStorage.todo) : [];
     if (todo !== null) {
       setTodo(todo);
     }
@@ -43,6 +30,7 @@ const Todo: FC = ({}) => {
       });
     };
   }, [todo]);
+
   return (
     <Layout>
       <Header />

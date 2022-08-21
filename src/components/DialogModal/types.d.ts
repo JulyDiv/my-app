@@ -3,9 +3,9 @@ export interface IDialogModalProps {
   setTodo: (todoData: ITodoArr[]) => void;
   setIsOpenModal: (isOpen: boolean) => void;
   value: string;
-  setValue: (a: string) => void;
+  setValue?: (a: string) => void;
   noteValue: string;
-  setNoteValue: (a: string) => void;
+  setNoteValue?: (a: string) => void;
   isChange: boolean;
   titleMain: string;
   currentId: any;
@@ -16,3 +16,4 @@ export interface ITodoArr {
   title: string;
   note: string;
 }
+
