@@ -1,14 +1,12 @@
 import { FC } from "react";
+import { IUserProps } from "./types";
 import { User, UsersBlock, UsersMail, UsersName } from "./Users.styled";
 
-const Users: FC = ({
+const Users: FC<IUserProps> = ({
   users,
-  setUsers,
   posts,
-  setPosts,
   setOpenPosts,
-  isOpenPosts,
-  filtered, setFiltered
+  setFiltered
 }) => {
   // const onClick = (id: any) => {
   //   let newPosts = [];

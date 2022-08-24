@@ -46,23 +46,15 @@ const Post: NextPage = () => {
       <Block>
         <Users
           users={users}
-          setUsers={setUsers}
           posts={posts}
-          setPosts={setPosts}
           setOpenPosts={setOpenPosts}
-          isOpenPosts={isOpenPosts}
-          filtered={filtered}
           setFiltered={setFiltered}
         />
       </Block>
       {isOpenPosts && (
         <Block>
           <Posts
-            posts={posts}
-            setPosts={setPosts}
-            setOpenPosts={setOpenPosts}
             filtered={filtered}
-            setFiltered={setFiltered}
           />
         </Block>
       )}
