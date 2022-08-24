@@ -6,8 +6,12 @@ export const UsersBlock = styled.div`
   margin: 5px;
   width: 200px;
   height: 180px;
-  border: 2px solid black;
-`
+  border: 2px solid #437275;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgba(169, 223, 205, 0.589);
+  }
+`;
 
 export const User = styled.h3`
 `
