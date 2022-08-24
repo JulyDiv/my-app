@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { PostNews, PostsBlock, PostsTitle } from "./Posts.styled";
+import { IPostsProps } from "./types";
 
-const Posts: FC = ({ posts, setPosts, setOpenPosts, filtered }) => {
+const Posts: FC<IPostsProps> = ({ filtered }) => {
   return (
     <>
       {filtered.map(({ id, userId, title, body }) => (
