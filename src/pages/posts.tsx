@@ -4,17 +4,26 @@ import { useState } from "react";
 import Posts from "../components/Posts/Posts";
 import axios from "axios";
 import Users from "../components/Users/Users";
-import { Block, Blocks, HeaderPostBlock, PostName } from "../components/Posts/Posts.styled";
-import { Container, Day, HeaderBlock } from "../components/Header/Header.styled";
+import {
+  Block,
+  Blocks,
+  HeaderPostBlock,
+  PostName,
+} from "../components/Posts/Posts.styled";
+import {
+  Container,
+  Day
+} from "../components/Header/Header.styled";
 import moment from "moment";
+import Header from "../components/Header/Header";
 
 const Post: NextPage = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const [filtered, setFiltered] = useState(posts);
   const [isOpenPosts, setOpenPosts] = useState(false);
-    const week = moment().format("dddd");
-    const day = moment().format("LL");
+  const week = moment().format("dddd");
+  const day = moment().format("LL");
   const getData = async () => {
     return await axios
       .get("https://jsonplaceholder.typicode.com/posts", {})
@@ -47,13 +56,7 @@ const Post: NextPage = () => {
 
   return (
     <>
-      <HeaderPostBlock>
-        <Container>
-          <Day>{week}</Day>
-          <PostName>NewS</PostName>
-          <Day>{day}</Day>
-        </Container>
-      </HeaderPostBlock>
+      <Header title="NewS" />
       <Blocks>
         <Block>
           <Users
@@ -66,7 +69,7 @@ const Post: NextPage = () => {
         </Block>
         {isOpenPosts && (
           <Block>
-            <Posts filtered={filtered} />
+            <Posts filtered={filtered} isOpenPosts={isOpenPosts} />
           </Block>
         )}
       </Blocks>

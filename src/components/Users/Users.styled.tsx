@@ -4,6 +4,7 @@ export const UsersBlock = styled.div`
   display: flex;
   flex-direction: column;
   margin: 5px;
+  padding: 5px;
   width: 200px;
   height: 180px;
   border: 2px solid #437275;

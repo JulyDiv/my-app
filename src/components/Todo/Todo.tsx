@@ -33,7 +33,7 @@ const Todo: FC = ({}) => {
 
   return (
     <Layout>
-      <Header />
+      <Header title="ToDo"/>
       <Render
         todo={todo}
         setTodo={setTodo}

@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const HeaderBlock = styled.div`
-  margin-bottom: 5px;
   height: 100px;
-  border-radius: 5px;
   background-color: #437275;
+  margin: 20px auto 0;
+  width: 1000px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 50%);
 `;
 
 export const Container = styled.div`

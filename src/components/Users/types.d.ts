@@ -1,6 +1,7 @@
 export interface IUserProps {
   users: IUserArr[];
   posts: IPostsArr[];
+  isOpenPosts: boolean;
   setOpenPosts: (isOpen: boolean) => void;
   setFiltered: any;
 }

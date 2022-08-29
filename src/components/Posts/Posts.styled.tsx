@@ -24,15 +24,20 @@ export const Block = styled.section`
 
 export const PostsBlock = styled.div`
   margin: 5px;
-  width: 98%;
+  padding: 5px;
+  width: 97%;
   height: 180px;
   border: 2px solid #437275;
   border-radius: 5px;
 `;
 
-export const PostsTitle = styled.h2``;
+export const PostsTitle = styled.h2`
+  text-align: center;
+`;
 
-export const PostNews = styled.p``;
+export const PostNews = styled.p`
+  text-align: center;
+`;
 
 export const PostName = styled.span`
   padding: 15px 15px;

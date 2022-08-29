@@ -4,7 +4,7 @@ export const TodoRenderBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto 5px;
+  margin: 5px auto ;
   width: 99%;
   border-radius: 5px;
   background-color: #c5d6d1;

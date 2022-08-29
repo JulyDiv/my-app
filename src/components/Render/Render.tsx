@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useState } from "react";
 import moment from "moment";
 import DialogModal from "../DialogModal/DialogModal";

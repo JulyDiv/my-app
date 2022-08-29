@@ -1,8 +1,11 @@
 import { FC } from "react";
 import moment from "moment";
 import { Container, Day, HeaderBlock, Name } from "./Header.styled";
+interface IHeaderProps {
+  title: string;
+}
 
-const Header: FC = () => {
+const Header: FC<IHeaderProps> = ({ title }) => {
   const week = moment().format("dddd");
   const day = moment().format("LL");
   return (
@@ -10,7 +13,7 @@ const Header: FC = () => {
       <HeaderBlock>
         <Container>
           <Day>{week}</Day>
-          <Name>TODO List</Name>
+          <Name>{title}</Name>
           <Day>{day}</Day>
         </Container>
       </HeaderBlock>

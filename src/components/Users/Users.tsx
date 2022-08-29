@@ -6,14 +6,18 @@ const Users: FC<IUserProps> = ({
   users,
   posts,
   setOpenPosts,
-  setFiltered
+  setFiltered,
+  isOpenPosts
 }) => {
-
-    const onClick = (id: any) => {
+  const onClick = (id: any) => {
+    if (users) {
       let newPosts = [...posts].filter((item: any) => item.userId === id);
       setOpenPosts(true);
       setFiltered(newPosts);
-    };
+    } if (isOpenPosts) {
+        setOpenPosts(false);
+    }
+  };
   return (
     <>
       {users.map(({ id, name, username, email }) => (
