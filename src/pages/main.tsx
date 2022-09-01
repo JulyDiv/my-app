@@ -1,37 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import styled from "styled-components";
 import Header from "../components/Header/Header";
+import { Block, ButtonOut, LinkItem } from "../components/Main/Main.styled";
+import { useRouter } from "next/router";
 
-const Block = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 1000px;
-`;
-const LinkItem = styled.a`
-  display: inline-block;
-  margin: 40px 40px;
-  padding: 15px 15px;
-  width: 200px;
-  height: 20px;
-  text-align: center;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 21px;
-  color: black;
-  background-color: #d2dce6;
-  border: 3px solid #437275;
-  border-radius: 25px;
-  cursor: pointer;
-  &:hover {
-    background-color: #437275;
-    color: white;
-  }
-`;
 const Main: NextPage = () => {
+    const router = useRouter();
+    const logOut = () => {
+      router.push('/')
+    }
   return (
     <>
       <Head>
@@ -62,6 +40,7 @@ const Main: NextPage = () => {
             <LinkItem>huk</LinkItem>
           </Link>
         </Block>
+        <ButtonOut onClick={() => logOut()}>LogOut</ButtonOut>
     </>
   );
 };

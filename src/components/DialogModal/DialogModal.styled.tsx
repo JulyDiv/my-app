@@ -17,7 +17,7 @@ export const DialogModalBlock = styled.div`
   right: 600px;
   padding: 20px 0;
   width: 500px;
-  height: 300px;
+  height: 350px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 0 5px rgb(0 0 0 / 50%);
@@ -67,11 +67,22 @@ export const ButtonBlock = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 180px;
-  height: 30px;
-  font-size: 16px;
+  display: block;
+  margin: auto;
+  padding: 5px 5px;
+  width: 200px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 37px;
+  color: white;
+  background-color: #437275;
+  border: 3px solid #d2dce6;
   border-radius: 5px;
   &:hover {
-    border: 4px solid #437275;
+    color: black;
+    background-color: #d2dce6;
+    border: 3px solid #437275;
+    border-radius: 35px;
   }
 `;
