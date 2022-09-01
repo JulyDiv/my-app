@@ -4,15 +4,16 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1;
   width: 100%;
   height: 100%;
   background-color: rgba(169, 223, 205, 0.589);
 `;
 
 export const DialogModalBlock = styled.div`
-  position: absolute;
+  position: fixed;
   top: 200px;
+  z-index: 2;
   right: 600px;
   padding: 20px 0;
   width: 500px;

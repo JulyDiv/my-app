@@ -6,14 +6,8 @@ import axios from "axios";
 import Users from "../components/Users/Users";
 import {
   Block,
-  Blocks,
-  HeaderPostBlock,
-  PostName,
+  Blocks
 } from "../components/Posts/Posts.styled";
-import {
-  Container,
-  Day
-} from "../components/Header/Header.styled";
 import moment from "moment";
 import Header from "../components/Header/Header";
 
@@ -22,8 +16,6 @@ const Post: NextPage = () => {
   const [users, setUsers] = useState([]);
   const [filtered, setFiltered] = useState(posts);
   const [isOpenPosts, setOpenPosts] = useState(false);
-  const week = moment().format("dddd");
-  const day = moment().format("LL");
   const getData = async () => {
     return await axios
       .get("https://jsonplaceholder.typicode.com/posts", {})

@@ -10,8 +10,24 @@ import {
   Title,
 } from "../DialogModal/DialogModal.styled";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-const Login: FC = ({ }) => {
+interface ILoginProps {
+  isLogin: any;
+  setIsLogin: any;
+}
+
+type Inputs = {
+  login: string;
+  password: string;
+};
+
+const Login: FC<ILoginProps> = ({ isLogin, setIsLogin }) => {
+    const [logins, setLogins] = useState("");
+    const [passwords, setPasswords] = useState("");
+    const [valueLogin, setValueLogin] = useState("");
+    const [valuePassword, setValuePassword] = useState("");
+    const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -19,17 +35,23 @@ const Login: FC = ({ }) => {
     formState: { errors },
   } = useForm({
     mode: "onBlur",
+    defaultValues: { login: valueLogin, password: valuePassword },
   });
-  const [logins, setLogins] = useState();
-  const [passwords, setPasswords] = useState();
-  const onSubmit: SubmitHandler<any> = (data) => {
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { login, password } = data;
+    console.log(data);
+    if (login === "admin" && password === "a") {
+      setIsLogin(true);
+    }
+    // setIsLogin(true);
+    router.push("/");
     reset();
   };
   return (
     <Overlay>
       <DialogModalBlock>
-        <Title>Log In Blog</Title>
+        <Title>LogIn</Title>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputBlock>
             <Input
@@ -47,7 +69,7 @@ const Login: FC = ({ }) => {
                   message: "Неверные символы",
                 },
               })}
-              placeholder="Login"
+              placeholder="Login: admin"
               style={{ border: errors.login && "1px solid red" }}
             />
 
@@ -64,7 +86,7 @@ const Login: FC = ({ }) => {
                   message: "Неверные символы",
                 },
               })}
-              placeholder="PassWord"
+              placeholder="PassWord: a"
               style={{ border: errors.password && "1px solid red" }}
             />
             {errors?.password?.message && (

@@ -1,22 +1,24 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
-import GlobalStyle from "../components/GlobalStyle/GlobalSyle";
 import Header from "../components/Header/Header";
-import { Container } from "../components/Header/Header.styled";
+import Login from "../components/Login/Login";
+import { useIsLogin } from "../hooks/useIsLogin";
 
 const Block = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin: auto;
   width: 1000px;
-  min-height: 500px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgb(0 0 0 / 50%);
 `;
 const LinkItem = styled.a`
   display: inline-block;
   margin: 40px 40px;
   padding: 15px 15px;
   width: 200px;
+  height: 20px;
   text-align: center;
   font-size: 19px;
   font-weight: 700;
@@ -32,24 +34,41 @@ const LinkItem = styled.a`
   }
 `;
 const Home: NextPage = () => {
+  const isLogin = useIsLogin();
   return (
     <>
-      <GlobalStyle />
-        <Header title="Welcome"/>
+      <Head>
+        <title>Main</title>
+        <meta name="title" content="MyBlog" />
+      </Head>
+      <Header title="Application" />
+      {isLogin.isLogin ? (
         <Block>
-          <Container>
-          <Link href="/login">
-          <LinkItem>Login</LinkItem>
-        </Link>
-        <Link href="/todo">
-          <LinkItem>Todo</LinkItem>
-        </Link>
-        <Link href="/posts">
-          <LinkItem>News</LinkItem>
-        </Link>
-        </Container>
+          <Link href="/todo">
+            <LinkItem>Todo</LinkItem>
+          </Link>
+          <Link href="/posts">
+            <LinkItem>News</LinkItem>
+          </Link>
+          <Link href="/notfound">
+            <LinkItem>404</LinkItem>
+          </Link>
+          <Link href="/review">
+            <LinkItem>Review</LinkItem>
+          </Link>
+          <Link href="/about">
+            <LinkItem>About</LinkItem>
+          </Link>
+          <Link href="#">
+            <LinkItem>dtyj</LinkItem>
+          </Link>
+          <Link href="#">
+            <LinkItem>huk</LinkItem>
+          </Link>
         </Block>
-        
+      ) : (
+        <Login {...isLogin} />
+      )}
     </>
   );
 };

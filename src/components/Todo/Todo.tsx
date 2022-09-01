@@ -2,7 +2,6 @@ import { FC } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ButtonAdd } from "../ButtonAdd/ButtonAdd.styled";
-import { Layout } from "../Layout/Layout.styled";
 import Header from "../Header/Header";
 import Render from "../Render/Render";
 import { ITodoArr } from "../DialogModal/types";
@@ -32,8 +31,7 @@ const Todo: FC = ({}) => {
   }, [todo]);
 
   return (
-    <Layout>
-      <Header title="ToDo"/>
+    <>
       <Render
         todo={todo}
         setTodo={setTodo}
@@ -47,7 +45,7 @@ const Todo: FC = ({}) => {
         setNoteValue={setNoteValue}
       />
       <ButtonAdd onClick={() => setIsOpenModal(true)}></ButtonAdd>
-    </Layout>
+    </>
   );
 };
 

@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-import GlobalStyle from "../components/GlobalStyle/GlobalSyle";
+import Header from "../components/Header/Header";
 import Todo from "../components/Todo/Todo";
 
 const TodoPage: NextPage = () => {
   return (
     <>
-      <GlobalStyle />
+      <Header title="ToDo" />
       <Todo />
     </>
   );
