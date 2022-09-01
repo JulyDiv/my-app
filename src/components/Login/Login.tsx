@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   Button,
@@ -23,8 +23,8 @@ type Inputs = {
 };
 
 const Login: FC<ILoginProps> = ({ isLogin, setIsLogin }) => {
-    const [logins, setLogins] = useState("");
-    const [passwords, setPasswords] = useState("");
+    const [logins, setLogins] = useState("admin");
+    const [passwords, setPasswords] = useState("a");
     const [valueLogin, setValueLogin] = useState("");
     const [valuePassword, setValuePassword] = useState("");
     const router = useRouter();
@@ -40,14 +40,15 @@ const Login: FC<ILoginProps> = ({ isLogin, setIsLogin }) => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { login, password } = data;
-    console.log(data);
-    if (login === "admin" && password === "a") {
+    if (login === logins && password === passwords) {
       setIsLogin(true);
+      router.push("/main");
+      reset();
+    } else {
+      alert("Incorrect username and password");
     }
-    // setIsLogin(true);
-    router.push("/");
-    reset();
   };
+
   return (
     <Overlay>
       <DialogModalBlock>

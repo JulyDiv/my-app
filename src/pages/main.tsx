@@ -3,9 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import Header from "../components/Header/Header";
-import Login from "../components/Login/Login";
-import { useIsLogin } from "../hooks/useIsLogin";
-import { useRouter } from "next/router";
 
 const Block = styled.div`
   display: flex;
@@ -34,9 +31,7 @@ const LinkItem = styled.a`
     color: white;
   }
 `;
-const Home: NextPage = () => {
-  const isLogin = useIsLogin();
-  const router = useRouter();
+const Main: NextPage = () => {
   return (
     <>
       <Head>
@@ -44,9 +39,31 @@ const Home: NextPage = () => {
         <meta name="title" content="MyBlog" />
       </Head>
       <Header title="Application" />
-        <Login {...isLogin} />
+        <Block>
+          <Link href="/todo">
+            <LinkItem>Todo</LinkItem>
+          </Link>
+          <Link href="/posts">
+            <LinkItem>News</LinkItem>
+          </Link>
+          <Link href="/notfound">
+            <LinkItem>404</LinkItem>
+          </Link>
+          <Link href="/review">
+            <LinkItem>Review</LinkItem>
+          </Link>
+          <Link href="/about">
+            <LinkItem>About</LinkItem>
+          </Link>
+          <Link href="#">
+            <LinkItem>dtyj</LinkItem>
+          </Link>
+          <Link href="#">
+            <LinkItem>huk</LinkItem>
+          </Link>
+        </Block>
     </>
   );
 };
 
-export default Home;
+export default Main;

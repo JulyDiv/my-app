@@ -9,7 +9,7 @@ const NotFound: NextPage = () => {
     const router = useRouter();
     useEffect(() => {
         setTimeout(() => {
-            router.push('/');
+            router.push('/main');
         }, 5000);
     }, []);
     return (
