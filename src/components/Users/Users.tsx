@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { IUserProps } from "./types";
-import { User, UsersBlock, UsersMail, UsersName } from "./Users.styled";
+import { User, UserAvatar, UserInfo, UsersBlock, UserText } from "./Users.styled";
+import { useState } from "react";
+import DBUsers from "./../../../public/DBUsers.json";
 
 const Users: FC<IUserProps> = ({
   users,
@@ -9,6 +11,7 @@ const Users: FC<IUserProps> = ({
   setFiltered,
   isOpenPosts
 }) => {
+  const [userAvatar, setUserAvatar] = useState(DBUsers);
   const onClick = (id: any) => {
     if (users) {
       let newPosts = [...posts].filter((item: any) => item.userId === id);
@@ -20,11 +23,18 @@ const Users: FC<IUserProps> = ({
   };
   return (
     <>
-      {users.map(({ id, name, username, email }) => (
+      {users.slice(0, 9).map(({ id, name, username, website }) => (
         <UsersBlock key={id} onClick={() => onClick(id)}>
-          <User>{name}</User>
-          <UsersName>{username}</UsersName>
-          <UsersMail>{email}</UsersMail>
+          <div>
+            {userAvatar.slice(0, 1).map(({ id, img }) => (
+              <UserAvatar key={id} img={img}></UserAvatar>
+            ))}
+          </div>
+          <UserInfo>
+            <User>{name}</User>
+            <UserText>{username}</UserText>
+            <UserText>{website}</UserText>
+          </UserInfo>
         </UsersBlock>
       ))}
     </>

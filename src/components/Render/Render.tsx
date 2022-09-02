@@ -44,7 +44,6 @@ const Render: FC<IRenderProps> = ({
       {todo.map(({ id, title, note }) => (
         <TodoRenderBlock key={id}>
           <Name>{title}</Name>
-
           <Note>{note}</Note>
           <Date>Create {data}</Date>
           <ButtonBlock>

@@ -10,5 +10,5 @@ export interface IUserArr {
   id: any;
   name: string;
   username: string;
-  email: string;
+  website: string;
 }

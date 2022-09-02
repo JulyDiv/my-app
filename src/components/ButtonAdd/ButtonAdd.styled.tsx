@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ButtonAdd = styled.button`
-  margin: 50px 0 50px 900px;
+  display: block;
+  margin: 100px 1600px;
   width: 50px;
   height: 50px;
   border: transparent;

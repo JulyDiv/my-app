@@ -1,49 +1,49 @@
 import styled from "styled-components";
 
-export const Block = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+export const Container = styled.div`
   margin: auto;
-  width: 1000px;
+  padding: 25px 0;
+  width: 1200px;
 `;
-export const LinkItem = styled.a`
+
+export const MainBlock = styled.div`
+  padding: 50px 0;
+  height: 500px;
+  background-color: #283a3b;
+`;
+
+export const MainGradient = styled.div`
+  position: absolute;
+  width: 358.9px;
+  height: 293.05px;
+  left: 161.08px;
+  top: 365.24px;
+  background: #c7ebe2;
+  filter: blur(250px);
+  transform: rotate(41.6deg);
+`;
+
+export const InfoBlock = styled.div`
   display: inline-block;
-  margin: 40px 40px;
-  padding: 15px 15px;
-  width: 200px;
-  height: 20px;
-  text-align: center;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 21px;
-  color: black;
-  background-color: #d2dce6;
-  border: 3px solid #437275;
-  border-radius: 25px;
-  cursor: pointer;
-  &:hover {
-    background-color: #437275;
-    color: white;
-  }
-`;
-export const ButtonOut = styled.button`
-  display: block;
-  margin: auto;
-  padding: 15px 15px;
-  width: 200px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 37px;
-  color: white;
-  background-color: #437275;
-  border: 3px solid #d2dce6;
+  margin: auto 50px;
+  width: 500px;
+  height: 350px;
   border-radius: 5px;
-  &:hover {
-    color: black;
-    background-color: #d2dce6;
-    border: 3px solid #437275;
-    border-radius: 35px;
-  }
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* box-shadow: 0 0 5px rgb(0 0 0 / 50%); */
+`;
+
+export const MainTitle = styled.h1`
+  margin: 10px 0;
+  text-align: center;
+  color: white;
+`;
+
+export const MainText = styled.p`
+  margin: 10px 0;
+  color: white;
+  text-align: center;
+  font-size: 20px;
 `;

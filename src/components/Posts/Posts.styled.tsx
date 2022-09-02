@@ -1,37 +1,59 @@
 import styled from "styled-components";
 
-export const HeaderPostBlock = styled.div`
-  margin: auto;
-  width: 1000px;
-  height: 100px;
-  border-radius: 5px;
-  background-color: #437275;
-`;
-
-export const Blocks = styled.section`
+export const Blocks = styled.div`
   display: flex;
-  margin: auto;
-  width: 1000px;
-  border-radius: 5px;
+  flex-wrap: wrap;
+  padding: 30px 0;
   box-shadow: 0 0 5px rgb(0 0 0 / 50%);
 `;
 
-export const Block = styled.section`
+export const Block = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
 `;
 
 export const PostsBlock = styled.div`
-  margin: 5px;
-  padding: 5px;
-  width: 97%;
-  height: 180px;
+  display: flex;
+  align-items: center;
+  margin: 20px 5px;
+  padding: 10px;
+  /* width: 97%;
+  height: 180px; */
   border: 2px solid #437275;
   border-radius: 5px;
+  animation: renderBlock 0.2s ease-in 1 both;
+  @keyframes renderBlock {
+    0% {
+      opacity: 0;
+      transform: translateX(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+`;
+
+export const PostAvatar = styled.div`
+  width: 500px;
+  height: 300px;
+  border-radius: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: ${({ img }) => `url(${img})`};
+`;
+
+export const PostInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+  height: 260px;
 `;
 
 export const PostsTitle = styled.h2`
+  margin-bottom: 10px;
   text-align: center;
 `;
 

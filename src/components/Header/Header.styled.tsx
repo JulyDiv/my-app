@@ -2,46 +2,67 @@ import styled from "styled-components";
 
 export const HeaderBlock = styled.div`
   height: 100px;
-  background-color: #437275;
-  margin: 20px auto 0;
-  width: 1000px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgb(0 0 0 / 50%);
+  background-color: #283a3b;
+  margin: auto;
+  width: 100%;
 `;
 
-export const Container = styled.div`
+export const HeaderGradient = styled.div`
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  left: 1400px;
+  top: 50px;
+  background: #c7ebe2;
+  filter: blur(200px);
+  transform: rotate(41.6deg);
+`;
+
+export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: auto;
   padding: 25px 0;
-  width: 800px;
-  height: 50px;
+  width: 1200px;
 `;
 
-export const Day = styled.span`
-  padding: 15px 15px;
-  width: 150px;
+export const HeaderItem = styled.span`
+  margin-right: 20px;
   text-align: center;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 21px;
-  color: black;
-  background-color: #d2dce6;
-  border: 3px solid white;
-  border-radius: 25px;
-`;
-
-export const Name = styled.span`
-  padding: 15px 15px;
-  width: 200px;
-  height: 35px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 37px;
-  color: black;
-  background-color: #d2dce6;
-  border: 3px solid white;
-  border-radius: 30px;
+  color: white;
+  border-bottom: 1px solid #c2cbcc5a;
+`;
+
+export const Block = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+export const LinkItem = styled.a`
+  margin-right: 20px;
+  text-align: center;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 37px;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    border-bottom: 1px solid #c2cbcc5a;
+  }
+`;
+export const ButtonOut = styled.button`
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 37px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #c2cbcc5a;
+  &:hover {
+  }
 `;

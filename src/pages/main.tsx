@@ -1,46 +1,34 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import Header from "../components/Header/Header";
-import { Block, ButtonOut, LinkItem } from "../components/Main/Main.styled";
-import { useRouter } from "next/router";
+import { Container, MainGradient } from "../components/Main/Main.styled";
+import { InfoBlock, MainBlock, MainText, MainTitle } from "../components/Main/Main.styled";
+import MainPosts from "../components/MainPosts/MainPosts";
 
 const Main: NextPage = () => {
-    const router = useRouter();
-    const logOut = () => {
-      router.push('/')
-    }
   return (
     <>
       <Head>
         <title>Main</title>
         <meta name="title" content="MyBlog" />
       </Head>
-      <Header title="Application" />
-        <Block>
-          <Link href="/todo">
-            <LinkItem>Todo</LinkItem>
-          </Link>
-          <Link href="/posts">
-            <LinkItem>News</LinkItem>
-          </Link>
-          <Link href="/notfound">
-            <LinkItem>404</LinkItem>
-          </Link>
-          <Link href="/review">
-            <LinkItem>Review</LinkItem>
-          </Link>
-          <Link href="/about">
-            <LinkItem>About</LinkItem>
-          </Link>
-          <Link href="#">
-            <LinkItem>dtyj</LinkItem>
-          </Link>
-          <Link href="#">
-            <LinkItem>huk</LinkItem>
-          </Link>
-        </Block>
-        <ButtonOut onClick={() => logOut()}>LogOut</ButtonOut>
+      <Header title="MyApp" />
+      <MainBlock>
+        <MainGradient />
+        <MainTitle>MyApp Application</MainTitle>
+        <MainText>Welcome, admin!</MainText>
+        <Container>
+          <InfoBlock style={{ backgroundImage: 'url("img/post-4.jpg")' }} />
+          <InfoBlock style={{ backgroundImage: 'url("img/post-8.jpg")' }} />
+        </Container>
+      </MainBlock>
+      <MainBlock style={{ backgroundColor: "white" }}>
+        <MainTitle style={{ color: "black" }}>NewS</MainTitle>
+        <MainText style={{ color: "black" }}>New friends posts</MainText>
+        <Container>
+          <MainPosts />
+        </Container>
+      </MainBlock>
     </>
   );
 };

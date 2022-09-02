@@ -7,7 +7,7 @@ export const Overlay = styled.div`
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(169, 223, 205, 0.589);
+  background-color: #486364ef;
 `;
 
 export const DialogModalBlock = styled.div`
@@ -35,7 +35,7 @@ export const DialogModalBlock = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin-top: 8px;
+  margin-top: 20px;
   color: black;
   text-align: center;
 `;
@@ -44,7 +44,7 @@ export const InputBlock = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: 50px auto;
+  margin: 40px auto;
   width: 400px;
   height: 130px;
 `;
@@ -55,7 +55,7 @@ export const Input = styled.input`
   font-size: 18px;
   border-radius: 5px;
   &:hover {
-    border: 4px solid #437275;
+    border: 4px solid #283a3b;
   }
 `;
 
@@ -70,19 +70,19 @@ export const Button = styled.button`
   display: block;
   margin: auto;
   padding: 5px 5px;
-  width: 200px;
+  width: 180px;
   text-align: center;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 400;
   line-height: 37px;
   color: white;
-  background-color: #437275;
-  border: 3px solid #d2dce6;
+  background-color: #283a3b;
+  border: 2px solid #d2dce6;
   border-radius: 5px;
   &:hover {
-    color: black;
+    color: #283a3b;
     background-color: #d2dce6;
-    border: 3px solid #437275;
-    border-radius: 35px;
+    border: 2px solid #283a3b;
+    border-radius: 20px;
   }
 `;
