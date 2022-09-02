@@ -6,6 +6,12 @@ export const Container = styled.div`
   width: 1200px;
 `;
 
+export const Line = styled.div`
+  width: 1200px;
+  height: 1px;
+  background-color: #c2cbcc5a;
+`;
+
 export const MainBlock = styled.div`
   padding: 50px 0;
   height: 500px;
