@@ -11,7 +11,7 @@ export const HeaderGradient = styled.div`
   position: absolute;
   width: 200px;
   height: 100px;
-  left: 1400px;
+  left: 1283px;
   top: 50px;
   background: #c7ebe2;
   filter: blur(200px);
@@ -50,7 +50,7 @@ export const LinkItem = styled.a`
   color: white;
   cursor: pointer;
   &:hover {
-    border-bottom: 1px solid #c2cbcc5a;
+    color: #c2cbcc5a;
   }
 `;
 export const ButtonOut = styled.button`
@@ -64,5 +64,6 @@ export const ButtonOut = styled.button`
   border: none;
   border-bottom: 1px solid #c2cbcc5a;
   &:hover {
+    color: #c2cbcc5a;
   }
 `;

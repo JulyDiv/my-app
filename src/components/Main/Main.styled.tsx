@@ -14,7 +14,6 @@ export const Line = styled.div`
 
 export const MainBlock = styled.div`
   padding: 50px 0;
-  height: 500px;
   background-color: #283a3b;
 `;
 
@@ -29,7 +28,7 @@ export const MainGradient = styled.div`
   transform: rotate(41.6deg);
 `;
 
-export const InfoBlock = styled.div`
+export const InfoBlockOne = styled.div`
   display: inline-block;
   margin: auto 50px;
   width: 500px;
@@ -38,7 +37,21 @@ export const InfoBlock = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /* box-shadow: 0 0 5px rgb(0 0 0 / 50%); */
+  background-image: url("img/post-4.jpg");
+  box-shadow: 0 0 15px rgb(211 201 201 / 50%);
+`;
+
+export const InfoBlockTwo = styled.div`
+  display: inline-block;
+  margin: auto 50px;
+  width: 500px;
+  height: 350px;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("img/post-8.jpg");
+  box-shadow: 0 0 15px rgb(211 201 201 / 50%);
 `;
 
 export const MainTitle = styled.h1`

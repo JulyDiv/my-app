@@ -1,42 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import styled from "styled-components";
 import Header from "../components/Header/Header";
 import Login from "../components/Login/Login";
 import { useIsLogin } from "../hooks/useIsLogin";
-import { useRouter } from "next/router";
 
-const Block = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 1000px;
-`;
-const LinkItem = styled.a`
-  display: inline-block;
-  margin: 40px 40px;
-  padding: 15px 15px;
-  width: 200px;
-  height: 20px;
-  text-align: center;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 21px;
-  color: black;
-  background-color: #d2dce6;
-  border: 3px solid #437275;
-  border-radius: 25px;
-  cursor: pointer;
-  &:hover {
-    background-color: #437275;
-    color: white;
-  }
-`;
 const Home: NextPage = () => {
   const isLogin = useIsLogin();
-  const router = useRouter();
   return (
     <>
       <Head>

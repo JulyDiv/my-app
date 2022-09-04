@@ -40,5 +40,11 @@ export const UserText = styled.span`
   margin-bottom: 5px;
 `;
 
+export const UserButton = styled.button`
+  margin-top: 10px;
+  width: 85%;
+  height: 25px;
+`;
+
 
 

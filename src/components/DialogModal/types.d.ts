@@ -17,3 +17,8 @@ export interface ITodoArr {
   note: string;
 }
 
+type Inputs = {
+  todos: string;
+  note: string;
+};
+

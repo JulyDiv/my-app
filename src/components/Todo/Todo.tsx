@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import { ButtonAdd } from "../ButtonAdd/ButtonAdd.styled";
 import Render from "../Render/Render";
 import { ITodoArr } from "../DialogModal/types";
+import { Empty } from "../Empty/Empty.styled";
+import { Container } from "../Main/Main.styled";
 
-const Todo: FC = ({}) => {
+const Todo: FC = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
   const [todo, setTodo] = useState<ITodoArr[]>([]);
@@ -31,6 +33,7 @@ const Todo: FC = ({}) => {
 
   return (
     <>
+    <Container>
       <Render
         todo={todo}
         setTodo={setTodo}
@@ -44,6 +47,7 @@ const Todo: FC = ({}) => {
         setNoteValue={setNoteValue}
       />
       <ButtonAdd onClick={() => setIsOpenModal(true)}></ButtonAdd>
+      </Container>
     </>
   );
 };

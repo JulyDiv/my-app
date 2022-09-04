@@ -2,7 +2,7 @@ import { FC, memo, useCallback } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 //@ts-ignore
 import uuid from "react-uuid";
-import { IDialogModalProps } from "./types";
+import { IDialogModalProps, Inputs } from "./types";
 import {
   Button,
   ButtonBlock,
@@ -12,11 +12,6 @@ import {
   Overlay,
   Title,
 } from "./DialogModal.styled";
-
-type Inputs = {
-  todos: string;
-  note: string;
-};
 
 const DialogModal: FC<IDialogModalProps> = ({
   setIsOpenModal,

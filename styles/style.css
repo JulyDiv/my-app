@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #283a3b;
+}
+.swiper-wrapper {
+  padding-bottom: 30px;
+}
+.swiper-pagination {
+margin-bottom: -13px;
+}

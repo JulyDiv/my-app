@@ -1,9 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header/Header";
-import { Container, Line, MainGradient } from "../components/Main/Main.styled";
+import { Container, InfoBlockOne, InfoBlockTwo, Line, MainGradient } from "../components/Main/Main.styled";
 import {
-  InfoBlock,
   MainBlock,
   MainText,
   MainTitle,
@@ -26,8 +25,8 @@ const Main: NextPage = () => {
         <MainTitle>MyApp Application</MainTitle>
         <MainText>Welcome, admin!</MainText>
         <Container>
-          <InfoBlock style={{ backgroundImage: 'url("img/post-4.jpg")' }} />
-          <InfoBlock style={{ backgroundImage: 'url("img/post-8.jpg")' }} />
+          <InfoBlockOne />
+          <InfoBlockTwo />
         </Container>
       </MainBlock>
       <MainBlock style={{ backgroundColor: "white" }}>

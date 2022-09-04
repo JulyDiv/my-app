@@ -11,18 +11,13 @@ export const Block = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const PostsBlock = styled.div`
-  display: flex;
-  align-items: center;
+export const PostBlock = styled.div`
   margin: 20px 5px;
   padding: 10px;
-  /* width: 97%;
-  height: 180px; */
   border: 2px solid #437275;
   border-radius: 5px;
-  animation: renderBlock 0.2s ease-in 1 both;
-  @keyframes renderBlock {
+  animation: postsBlock 0.2s ease-in 1 both;
+  @keyframes postsBlock {
     0% {
       opacity: 0;
       transform: translateX(0px);
@@ -32,6 +27,14 @@ export const PostsBlock = styled.div`
       transform: translateX(0px);
     }
   }
+`;
+
+export const PostsBlock = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 20px 5px;
+  border: 2px solid #437275;
+  border-radius: 5px;
 `;
 
 export const PostAvatar = styled.div`
@@ -58,7 +61,9 @@ export const PostsTitle = styled.h2`
 `;
 
 export const PostNews = styled.p`
+  padding: 0 10px;
   text-align: center;
+  word-break: break-all;
 `;
 
 export const PostName = styled.span`

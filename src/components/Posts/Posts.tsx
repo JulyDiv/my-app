@@ -1,8 +1,11 @@
 import { FC } from "react";
 import { useState } from "react";
-import DBPosts from "./../../../public/DBPosts.json"
+import DBPosts from "./../../../public/DBPosts.json";
+import PostsAvatar from "./PostAvatar";
 import {
+  Block,
   PostAvatar,
+  PostBlock,
   PostInfo,
   PostNews,
   PostsBlock,
@@ -10,23 +13,25 @@ import {
 } from "./Posts.styled";
 import { IPostsProps } from "./types";
 
-const Posts: FC<IPostsProps> = ({ filtered }) => {
-  const [postAvatar, setPostAvatar] = useState(DBPosts);
+const Posts: FC<IPostsProps> = ({
+  filtered,
+  postFiltered,
+}) => {
   return (
     <>
-      {filtered.map(({ id, title, body }) => (
-        <PostsBlock key={id}>
-          <div>
-            {postAvatar.slice(0, 1).map(({ id, img }) => (
-              <PostAvatar key={id} img={img}></PostAvatar>
-            ))}
-          </div>
-          <PostInfo>
-            <PostsTitle>{title}</PostsTitle>
-            <PostNews>{body}</PostNews>
-          </PostInfo>
-        </PostsBlock>
-      ))}
+      <PostBlock>
+        {filtered.map(({ id, title, body }) => (
+          <PostsBlock>
+            <PostsAvatar
+              postFiltered={postFiltered}
+            />
+            <PostInfo key={id}>
+              <PostsTitle>{title}</PostsTitle>
+              <PostNews>{body}</PostNews>
+            </PostInfo>
+          </PostsBlock>
+        ))}
+      </PostBlock>
     </>
   );
 };

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const ButtonAdd = styled.button`
+  position: fixed;
+  top: 130px;
+  left: 1400px;
   display: block;
-  margin: 100px 1600px;
   width: 50px;
   height: 50px;
   border: transparent;

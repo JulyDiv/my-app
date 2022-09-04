@@ -8,30 +8,30 @@ export const Block = styled.div`
   margin: 50px auto;
   padding: 20px;
   width: 500px;
-  height: 200px;
+  height: 300px;
   border-radius: 5px;
-  border: 5px solid #437275;
+  border: 2px solid #283a3b;
 `;
 
 export const TitleMain = styled.h1`
-    
-`
+  font-weight: 500;
+`;
 
 export const Title = styled.h3`
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 37px;
 `;
 
 export const Text = styled.p`
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 37px;
 `;
 
 export const LinkItem = styled.a`
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 37px;
   color: #437275;
   &:hover {

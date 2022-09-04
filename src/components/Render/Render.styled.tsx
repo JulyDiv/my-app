@@ -37,16 +37,13 @@ export const Name = styled.span`
 
 export const Note = styled.span`
   padding: 5px 0;
-  width: 600px;
+  width: 40%;
   color: black;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
   word-break: break-all;
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
-  /* text-overflow: ellipsis; */
 `;
 
 export const Date = styled.span`
@@ -62,12 +59,12 @@ export const ButtonBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-right: 15px;
-  width: 410px;
+  width: 25%;
   height: 50px;
 `;
 
 export const Button = styled.button`
-  width: 200px;
+  width: 49%;
   height: 30px;
   font-style: normal;
   font-weight: 400;

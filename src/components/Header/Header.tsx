@@ -38,9 +38,6 @@ const Header: FC<IHeaderProps> = ({ title }) => {
             <Link href="/myblog">
               <LinkItem>MyBlog</LinkItem>
             </Link>
-            <Link href="/review">
-              <LinkItem>Review</LinkItem>
-            </Link>
             <Link href="/notfound">
               <LinkItem>404</LinkItem>
             </Link>

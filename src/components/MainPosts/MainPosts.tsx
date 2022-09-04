@@ -4,13 +4,15 @@ import Posts from "../Posts/Posts";
 import axios from "axios";
 import Users from "../Users/Users";
 import { Block, Blocks } from "../Posts/Posts.styled";
-import UserSwiper from "../UserSwiper/UserSwiper";
+import DBPosts from "./../../../public/DBPosts.json";
 
 const Post: FC = () => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   const [filtered, setFiltered] = useState(posts);
   const [isOpenPosts, setOpenPosts] = useState(false);
+  const [postAvatar, setPostAvatar] = useState(DBPosts);
+  const [postFiltered, setPostFiltered] = useState(postAvatar);
   const getData = async () => {
     return await axios
       .get("https://jsonplaceholder.typicode.com/posts", {})
@@ -45,16 +47,28 @@ const Post: FC = () => {
   return (
     <>
       <Blocks>
-          <Users
-            users={users}
-            posts={posts}
-            setOpenPosts={setOpenPosts}
-            setFiltered={setFiltered}
-            isOpenPosts={isOpenPosts}
-          />
+        <Users
+          users={users}
+          posts={posts}
+          setOpenPosts={setOpenPosts}
+          filtered={filtered}
+          setFiltered={setFiltered}
+          isOpenPosts={isOpenPosts}
+          postAvatar={postAvatar}
+          setPostAvatar={setPostAvatar}
+          postFiltered={postFiltered}
+          setPostFiltered={setPostFiltered}
+        />
         {isOpenPosts && (
           <Block>
-            <Posts filtered={filtered} isOpenPosts={isOpenPosts} />
+            <Posts
+              filtered={filtered}
+              isOpenPosts={isOpenPosts}
+              postAvatar={postAvatar}
+              setPostAvatar={setPostAvatar}
+              postFiltered={postFiltered}
+              setPostFiltered={setPostFiltered}
+            />
           </Block>
         )}
       </Blocks>
