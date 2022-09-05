@@ -13,6 +13,7 @@ const Post: FC = () => {
   const [isOpenPosts, setOpenPosts] = useState(false);
   const [postAvatar, setPostAvatar] = useState(DBPosts);
   const [postFiltered, setPostFiltered] = useState(postAvatar);
+
   const getData = async () => {
     return await axios
       .get("https://jsonplaceholder.typicode.com/posts", {})
@@ -40,10 +41,6 @@ const Post: FC = () => {
     getDatas();
   }, []);
 
-//   useEffect(() => {
-//     getDatas();
-//   }, []);
-
   return (
     <>
       <Blocks>
@@ -51,23 +48,13 @@ const Post: FC = () => {
           users={users}
           posts={posts}
           setOpenPosts={setOpenPosts}
-          filtered={filtered}
           setFiltered={setFiltered}
           isOpenPosts={isOpenPosts}
-          postAvatar={postAvatar}
-          setPostAvatar={setPostAvatar}
-          postFiltered={postFiltered}
-          setPostFiltered={setPostFiltered}
         />
         {isOpenPosts && (
           <Block>
             <Posts
               filtered={filtered}
-              isOpenPosts={isOpenPosts}
-              postAvatar={postAvatar}
-              setPostAvatar={setPostAvatar}
-              postFiltered={postFiltered}
-              setPostFiltered={setPostFiltered}
             />
           </Block>
         )}

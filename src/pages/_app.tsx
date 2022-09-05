@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app";
 import GlobalStyle from "../components/GlobalStyle/GlobalSyle";
 import Layout from "../components/Layout/Layout";
+// import { useState } from "react";
+// import { useRouter } from "next/router";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./../../styles/style.css";

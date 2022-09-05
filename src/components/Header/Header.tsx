@@ -39,7 +39,7 @@ const Header: FC<IHeaderProps> = ({ title }) => {
               <LinkItem>MyBlog</LinkItem>
             </Link>
             <Link href="/notfound">
-              <LinkItem>404</LinkItem>
+              <LinkItem>NF</LinkItem>
             </Link>
           </Block>
           <ButtonOut onClick={() => logOut()}>LogOut</ButtonOut>

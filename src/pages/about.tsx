@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header/Header";
+import AboutMe from "../components/AboutMe/AboutMe";
 
-const AboutMe: NextPage = () => {
+const AboutMePage: NextPage = () => {
   return (
     <>
       <Head>
@@ -10,8 +11,9 @@ const AboutMe: NextPage = () => {
         <meta name="title" />
       </Head>
       <Header title="About Me" />
+      <AboutMe />
     </>
   );
 };
 
-export default AboutMe;
+export default AboutMePage;

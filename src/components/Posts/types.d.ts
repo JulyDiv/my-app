@@ -1,6 +1,5 @@
 export interface IPostsProps {
   filtered: IPostsArr[];
-  isOpenPosts: boolean;
 }
 
 export interface IPostsArr {

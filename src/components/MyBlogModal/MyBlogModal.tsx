@@ -23,7 +23,6 @@ const MyBlogModal: FC<IMyBlogModalProps> = ({
   mypostsNameValue,
   mypostsValue,
   titleMain,
-  myPhotos
 }) => {
   const {
     register,
@@ -34,14 +33,11 @@ const MyBlogModal: FC<IMyBlogModalProps> = ({
     mode: "onBlur",
     defaultValues: {
       mypostName: mypostsNameValue,
-      mypost: mypostsValue,
-      photo: myPhotos,
+      mypost: mypostsValue
     },
   });
-
   const onSubmit: SubmitHandler<Inputs> = (data, id) => {
-    const { mypostName, mypost, photo } = data;
-    console.table(data.photo);
+    const { mypostName, mypost } = data;
     let newPost = [];
     if (isChangeBlog) {
       newPost = [...myposts].filter((item) => {
@@ -58,7 +54,6 @@ const MyBlogModal: FC<IMyBlogModalProps> = ({
           id: uuid(),
           title: mypostName,
           body: mypost,
-          img: photo
         },
       ];
     }
@@ -66,6 +61,7 @@ const MyBlogModal: FC<IMyBlogModalProps> = ({
     setIsOpenModalBlog(false);
     reset();
   };
+
   return (
     <>
       <Overlay />
@@ -95,12 +91,6 @@ const MyBlogModal: FC<IMyBlogModalProps> = ({
                 required: false,
               })}
               placeholder="Text Post"
-            />
-            <InputFile
-              {...register("photo", {
-                required: false,
-              })}
-              type="file"
             />
           </InputBlock>
           <ButtonBlock>

@@ -19,25 +19,13 @@ const Users: FC<IUserProps> = ({
   setOpenPosts,
   setFiltered,
   isOpenPosts,
-  postAvatar,
-  filtered,
-  setPostFiltered,
 }) => {
   const [userAvatar, setUserAvatar] = useState(DBUsers);
-  // const [postFiltered, setPostFiltered] = useState(postAvatar);
   const onClick = (id: any) => {
     if (users) {
-      let newPosts = [...posts].filter((item: any) => item.userId === id); //userId - это id поста (10шт), id - это id юзера
+      let newPosts = [...posts].filter((item: any) => item.userId === id);
       setOpenPosts(true);
       setFiltered(newPosts);
-      console.log(newPosts);
-    }
-    if (filtered) {
-      let newPosts = [...postAvatar].filter(
-        (item: any) => item.id === id
-      ); //item.id - это id картинки, id - это id юзера, а надо id поста
-      setOpenPosts(true);
-      setPostFiltered(newPosts);
       console.log(newPosts);
     }
     if (isOpenPosts) {

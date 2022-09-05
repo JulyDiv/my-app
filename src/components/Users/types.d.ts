@@ -4,9 +4,6 @@ export interface IUserProps {
   isOpenPosts: boolean;
   setOpenPosts: (isOpen: boolean) => void;
   setFiltered: any;
-  postAvatar;
-  filtered;
-  setPostFiltered;
 }
 
 export interface IUserArr {

@@ -1,7 +1,4 @@
 import { FC } from "react";
-import { useState } from "react";
-import DBPosts from "./../../../public/DBPosts.json";
-import PostsAvatar from "./PostAvatar";
 import {
   Block,
   PostAvatar,
@@ -13,18 +10,13 @@ import {
 } from "./Posts.styled";
 import { IPostsProps } from "./types";
 
-const Posts: FC<IPostsProps> = ({
-  filtered,
-  postFiltered,
-}) => {
+const Posts: FC<IPostsProps> = ({ filtered }) => {
+
   return (
     <>
       <PostBlock>
         {filtered.map(({ id, title, body }) => (
           <PostsBlock>
-            <PostsAvatar
-              postFiltered={postFiltered}
-            />
             <PostInfo key={id}>
               <PostsTitle>{title}</PostsTitle>
               <PostNews>{body}</PostNews>

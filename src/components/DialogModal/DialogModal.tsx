@@ -35,7 +35,6 @@ const DialogModal: FC<IDialogModalProps> = ({
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { note, todos } = data;
-    console.log(data);
     let newTodo = [];
     if (isChange) {
       newTodo = [...todo].filter((item) => {

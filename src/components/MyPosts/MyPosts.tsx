@@ -29,7 +29,6 @@ const MyPosts: FC<IMyPosts> = ({
       <>
         {myposts.map(({ id, title, body, img }) => (
           <PostsBlock key={id}>
-            <MyPostsAvatar img={img}></MyPostsAvatar>
             <MyPostsInfo>
               <PostsTitle>{title}</PostsTitle>
               <PostNews>{body}</PostNews>

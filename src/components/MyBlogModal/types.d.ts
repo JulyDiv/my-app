@@ -13,10 +13,8 @@ export interface IPostArr {
   id: any;
   title: string;
   body: string;
-  img: any;
 };
 export type Inputs = {
-  mypostName: any;
+  mypostName: string;
   mypost: any;
-  photo: any;
 };

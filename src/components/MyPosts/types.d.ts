@@ -1,5 +1,9 @@
 export interface IMyPosts {
   myposts: IPostArr[];
+  setMyPosts;
+  setMyPostsValue;
+  setIsOpenModalBlogEdit;
+  setMyPostsNameValue;
 }
 
 export interface IPostArr {

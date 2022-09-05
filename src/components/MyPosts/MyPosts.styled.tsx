@@ -8,7 +8,7 @@ export const MyPostsAvatar = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   /* background-image: ${({ img }) => `url(${img})`}; */
-  background-image: url("img/user-1.jpg");
+  /* background-image: url("img/user-1.jpg"); */
 `;
 
 export const MyPostsInfo = styled.div`

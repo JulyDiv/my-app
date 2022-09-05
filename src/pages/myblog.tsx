@@ -13,7 +13,7 @@ const MyBlog: NextPage = () => {
   const [myposts, setMyPosts] = useState([]);
   const [mypostsValue, setMyPostsValue] = useState('');
   const [mypostsNameValue, setMyPostsNameValue] = useState('');
-  const [myPhotos, setMyPhotos] = useState('');
+  // const [myPhotos, setMyPhotos] = useState('');
   useEffect(() => {
     const myposts = localStorage.myposts
       ? JSON.parse(localStorage.myposts)
@@ -48,7 +48,6 @@ const MyBlog: NextPage = () => {
           setIsOpenModalBlogEdit={setIsOpenModalBlogEdit}
           setMyPostsValue={setMyPostsValue}
           setMyPostsNameValue={setMyPostsNameValue}
-          myPhotos={myPhotos}
         />
         <ButtonAdd onClick={() => setIsOpenModalBlog(true)} />
       </Container>
@@ -66,107 +65,8 @@ const MyBlog: NextPage = () => {
           mypostsValue={isOpenModalBlog ? "" : mypostsValue}
           mypostsNameValue={isOpenModalBlog ? "" : mypostsNameValue}
           isOpenModalBlog={false}
-          myPhotos={myPhotos}
         />
       )}
-      {/* <section className="LoaderPage">
-        <img src="img/loaded.gif"/>
-        <div className="LodInfo">
-            <p id="LodInfo1">Cargando Datos...</p>
-            <p id="LodInfo2">Buscando Posicion...</p>
-        </div>
-    </section>
-
-    <i className="fas fa-bars" id="Menu"></i>
-    <i className="fas fa-bars" id="MenuMobil"></i>
-
-    <nav className="MenuMax">
-        <div className="DatosFlex">
-
-            <p>Datos Actuales</p>
-            <hr/>
-            <div className="DatosClima">
-                <p>Velocidad Viento:</p>
-                <p id="Velviento"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Humedad:</p>
-                <p id="Humedad"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Nubosidad:</p>
-                <p id="Nubosidad"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Visibilidad:</p>
-                <p id="Visibilidad"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Direccion del Viento:</p>
-                <p id="DireccionViento"></p>
-            </div>
-        </div>
-        <div className="HoraActual">
-            <p id="Hora"></p>
-        </div>
-        <div className="Copy">
-            <p>Todos los derechos reservados(c)- Weater App</p>
-        </div>
-    </nav>
-
-    <section className="MenuMobil">
-        <div className="DatosFlex">
-            <p>Datos Actuales</p>
-            <hr/>
-            <div className="DatosClima">
-                <p>Velocidad Viento:</p>
-                <p id="Velviento"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Humedad:</p>
-                <p id="Humedad"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Nubosidad:</p>
-                <p id="Nubosidad"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Visibilidad:</p>
-                <p id="Visibilidad"></p>
-            </div>
-            <div className="DatosClima">
-                <p>Direccion del Viento:</p>
-                <p id="DireccionViento"></p>
-            </div>
-        </div>
-        <div className="HoraActual">
-            <p id="Hora"></p>
-        </div>
-        <div className="Copy">
-            <p>Todos los derechos reservados(c)- Weater App</p>
-        </div>
-    </section>
-
-    <header>
-        <div className="PagHeader">
-            <div className="Top">
-                <p id="Posicion"></p>
-                <p id="Fecha"></p>
-            </div>
-
-            <div className="ClimaActual">
-                <div className="ClimaContainer"></div>
-            </div>
-            <div className="DiasClima">
-                <div className="DiasContainer">
-                    <li id="DiaMenos1"></li>
-                    <li id="DiaMenos2"></li>
-                    <li id="DiaMenos3"></li>
-                    <li id="DiaMenos4"></li>
-                </div>
-            </div>
-        </div>
-    </header> */}
     </>
   );
 };
