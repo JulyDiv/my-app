@@ -1,6 +1,14 @@
 #### MyApp
 #### Изначально "задумывался" как обычный toList для изучения библиотеки React, но я решила расширить приложение
 
+![LogInMyApp](https://user-images.githubusercontent.com/99066910/190967105-d63276b0-19d8-4ff2-8efa-444c3fe2ac66.PNG)
+
+
+![MainMyApp](https://user-images.githubusercontent.com/99066910/190967068-f8c16e15-4d7a-47f9-ab13-68d6bb5e72e8.PNG)
+
+![NewsMyApp](https://user-images.githubusercontent.com/99066910/190967120-00514ff7-52c4-4a20-87c8-1c3f2478991a.PNG)
+
+
 #### На данном этапе:
 :star2: Авторизация для одного пользователя <br>
 :star2: Создала несколько страниц с асинхронным переходом между ними <br>
